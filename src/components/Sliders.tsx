@@ -28,8 +28,8 @@ type toolState = {
 export default function Sliders({min, max, step, defaultValueType, label, onChangeFunction, onInputChangeFunction}: sliderProps) {
     const store:toolState = toolStore();
     return (
-        <Box sx={{ width: 500 }} className = "flex flex-col">
-            <div className='flex justify-between items-center'>
+        <Box className = "flex flex-col max-w-100">
+            <div className='flex justify-around gap-5 items-center flex-col sm:flex-row'>
                 {label}:
                 <input inputMode='numeric' value={store[defaultValueType]} className='border p-1' onChange={onInputChangeFunction}/>
             </div>
