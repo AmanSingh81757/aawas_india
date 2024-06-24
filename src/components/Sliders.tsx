@@ -9,7 +9,8 @@ type sliderProps = {
     step: number,
     defaultValueType: string,
     label: string,
-    onChangeFunction: (event: Event, value: number | number[]) => void
+    onChangeFunction: (event: Event, value: number | number[]) => void,
+    onInputChangeFunction: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 type toolState = {
@@ -24,13 +25,13 @@ type toolState = {
     [key: string]: any
 }
 
-export default function Sliders({min, max, step, defaultValueType, label, onChangeFunction}: sliderProps) {
+export default function Sliders({min, max, step, defaultValueType, label, onChangeFunction, onInputChangeFunction}: sliderProps) {
     const store:toolState = toolStore();
     return (
         <Box sx={{ width: 500 }} className = "flex flex-col">
             <div className='flex justify-between items-center'>
                 {label}:
-                <input type='number' value={store[defaultValueType]} className='border p-1'/>
+                <input inputMode='numeric' value={store[defaultValueType]} className='border p-1' onChange={onInputChangeFunction}/>
             </div>
             <Slider
                 aria-label={label}
